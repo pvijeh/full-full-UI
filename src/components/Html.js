@@ -32,6 +32,10 @@ class Html extends React.Component {
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="screen" />
           {style && <style id="css" dangerouslySetInnerHTML={{ __html: style }} />}
         </head>
         <body>

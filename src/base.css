@@ -1,0 +1,120 @@
+@import '../../components/variables.css';
+
+*{
+  box-sizing: border-box;
+}
+
+.container { 
+max-width: 1150px; 
+}
+
+.root {
+
+  button {
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: none;
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: var(--link-color);
+    }
+
+    &.active {
+     color: var(--link-color); 
+    }
+
+  }
+
+  .containerfullwidth {
+    padding: 0;
+    background-color: green;
+  }
+
+  h1,h2,h3,h4,h5,h6,p,span,li {
+    padding:none;
+    margin:0;
+    margin-bottom: 15px;
+    color:white;
+  }
+
+}
+
+.container {
+  margin: 0 auto;
+  /*background-color:red;*/
+  max-width: var(--max-content-width);
+}
+
+.imageBox {
+  padding: 0; 
+  
+  img {
+    width: 100%;
+  }
+}
+
+.socialButtonContainerOutter {
+  position: relative;
+}
+
+.socialButtonContainer {
+  position: absolute;
+  right:  0;
+  bottom: 0;
+  background-color: red;
+
+  button {
+    margin-left: 15px;
+    width: 75px;
+    color: white;
+  }
+}
+
+.placeHeaderRow{
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.topBottomMargin {
+  margin: 15px 0 15px 0;
+}
+
+.news {
+  padding: 0;
+  -webkit-padding-start: 0;
+  list-style-type: none;
+}
+
+.newsItem {
+  background-color: black;
+  color: black;
+  min-height: 50px;
+  width: 100%;
+  /*border: 5px solid red;*/
+  border: 5px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+  padding-bottom: 6px;
+  
+  span {
+    color: white;
+  }
+}
+
+.newsTitle {
+  font-size: 1.125em;
+}
+
+.newsTitle,
+.newsDesc {
+  display: block;
+}
+

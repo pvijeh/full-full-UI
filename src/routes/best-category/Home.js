@@ -31,9 +31,7 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1 className={s.title}>need to put sorted list of top 20 categories here ranked by total of votes in that category</h1>
-          <p>list should be expandable on click of button </p>
-          <p>below categories list put of top 20 places ranked by total number of votes</p>
+          <h1 className={s.title}>React.js News</h1>
           <ul className={s.news}>
             {this.props.votes.map((item, index) => (
               <li key={index} className={s.newsItem}>

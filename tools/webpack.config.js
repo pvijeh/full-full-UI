@@ -154,6 +154,9 @@ const config = {
         require('postcss-partial-import')({ addDependencyTo: bundler }),
         // Allow you to fix url() according to postcss to and/or from options
         // https://github.com/postcss/postcss-url
+        require('postcss-mixins')(),
+        //
+        //
         require('postcss-url')(),
         // W3C variables, e.g. :root { --color: red; } div { background: var(--color); }
         // https://github.com/postcss/postcss-custom-properties

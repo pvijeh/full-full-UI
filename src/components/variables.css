@@ -28,4 +28,72 @@
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
+
+  /*
+   * Mixins
+   * ======================================================================== */
+
+--brand-color: red;
+--link-color: red;
+--gray: #d5d5d5;
+--font-color: #333;
+--font-hover-color: purple;
+
+--facebook: #3b5998;
+--twitter: #00aced;
+--pinterest: #cb2027;
+
+
+  line-height: 1.1;
+
+  p, span, a, li, h1, h2, h3, h4, h6, h6 {
+    margin:  0 0 10px 0;
+    padding: 0;
+    line-height: 1.2;
+    color: var(--font-color);
+  }
+
+  ul {
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+  
+  h1, h2, h3 {
+    font-size: 36px !important;
+  }
+
+  h4, h6, h6 {
+    font-size: 26px !important;
+  }
+
+  p, span, a, li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+  /*font-family: 'Lato', sans-serif;*/
+    font-size: 14px; 
+    text-decoration: none;
+  }
+
+  a {
+
+    cursor: pointer;
+    
+    &:hover {
+      color: purple;
+      /*color: var(--font-hover-color);*/
+    };
+  }
+
+  *{
+    box-sizing: border-box;
+  }
+
 }
+
+

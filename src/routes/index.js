@@ -20,10 +20,17 @@ export default {
     require('./contact').default,
     require('./login').default,
     require('./register').default,
+    // need to add in these routes 
+    // require('./about').default,
+    // require('./privacy').default,
     require('./admin').default,
 
+    require('./place').default,    
+
     // Wildcard routes, e.g. { path: '*', ... } (must go last)
+
     require('./content').default,
+
     require('./notFound').default,
   ],
 
