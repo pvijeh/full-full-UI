@@ -9,6 +9,9 @@
 @import '../../components/variables.css';
 
 .root {
+  background-color: rgb(240, 240, 240);
+  padding-top: 10px;
+  padding-bottom: 20px;
 
   .placeTagListWrapper {
     border-radius: 2px;
@@ -16,11 +19,28 @@
     max-width: 750px;
     margin: auto;
     width: 100%;
+    margin-bottom: 10px;
+
+    .placeTagListTitle {
+      padding: 20px 30px;
+      border-bottom: 1px solid #cccccc;
+      background-color: white;
+      
+      h2 {
+        margin:0;
+      }
+    }
+
+    li:last-child {
+      .placeTagContainer {
+        border-bottom: none;
+      }
+    }
   }
 
   button {
     transition: 0.3s;
-    padding: 3px 5px;
+    padding: 5px 5px;
     border-radius: 3px;
     border: none;
     box-shadow: none;
@@ -37,54 +57,27 @@
     }
 
     &:hover {
-      color: var(--link-color);
+      color: var(--font-hover-color);
       
       span {
-        color: var(--link-color);
+        color: var(--font-hover-color);
       }
     }
 
     &.active {
-     color: var(--link-color); 
+     color: var(--font-hover-color); 
      
      span {
-        color: var(--link-color);
+        color: var(--font-hover-color);
       }
     }
 
-  }
-
-  .voteButton {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-
-    div {
-      position: relative;
-      padding-left: 30px;
-
-      span {
-        line-height: 14px;
-        height: 14px;
-        position: absolute;
-        top: 0;
-        left: 5px;
-        font-size: 30px;
-      }
-    }
   }
 
   .containerfullwidth {
     padding: 0;
     border-bottom: 1px solid #cccccc;
   }
-
-}
-
-.container {
-  margin: 0 auto;
-  max-width: var(--max-content-width);
-}
 
 .imageBox {
   padding: 0; 
@@ -100,7 +93,7 @@
 
 .socialButtonContainer {
   position: absolute;
-  right:  0;
+  right:  10px;
   bottom: 0;
 
   button {
@@ -110,31 +103,51 @@
   }
 }
 
-.placeHeaderRow{
-  background-color: black;
-  color: white;
+.placeHeaderRow {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #000000 , #434343); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #000000 , #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+  max-width: 800px;
   padding: 20px;
-}
+  margin: 10px auto 20px auto;
+  border-radius: 2px;
 
-.topBottomMargin {
-  margin: 15px 0 15px 0;
-}
+  h1 {
+    line-height:0.8;
+  }
 
-.news {
-  padding: 0;
-  -webkit-padding-start: 0;
-  list-style-type: none;
-}
+  h1, p, span {
+    color: white;
+  }
 
-.newsItem {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  list-style-type: none;
-}
+  .voteButton {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 10px 10px 10px 40px;
+    position: relative;
+    transition: 0.3s;
 
-.newsTitle,
-.newsDesc {
-  display: block;
+    span {
+      text-align: right;
+      color: black;  
+    }
+
+    &:hover {
+      .voteButtonIcon, span { 
+        color: var(--font-hover-color);
+      }  
+    }    
+
+    .voteButtonIcon {
+      position: absolute;
+      line-height: 14px;
+      height: 14px;
+      position: absolute;
+      left: 15px;
+      font-size: 30px;
+    }
+  }
 }
 
 .facebookBgColor {
@@ -153,6 +166,7 @@
 }
 
 .placeTagContainer {
+  background-color: white;
   width: 100%;
   color: black;
   margin: auto;
@@ -165,6 +179,15 @@
   transition: 0.3s;
   align-items: center;
   cursor: pointer;
+
+  &.testClass {
+    border: 5px solid blue !important;
+    background-color: red !important;
+  }
+
+  h4 {
+    line-height: .8;
+  }
   
   &:hover {
     opacity:1;
@@ -191,11 +214,10 @@
     border-radius: 2px;
     border: 1px solid rgba(0,0,0,.10);
 
-
     &:hover{
-      border: 1px solid purple;
+      border: 1px solid var(--font-hover-color);
       background-color: rgba(0,0,0,0.1);
-      color: purple;
+      color: var(--font-hover-color);
     };
   }
 
@@ -264,5 +286,4 @@
   }
 }
 
-
-
+}

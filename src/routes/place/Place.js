@@ -12,30 +12,60 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Place.css';
 import Link from '../../components/Link';
 
-
 class PlaceTag extends React.Component {
   static propTypes = {
-    item: PropTypes.objectOf(PropTypes.shape({
+    item: PropTypes.shape({
     categorySlug: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     count: PropTypes.number.isRequired,
-    })).isRequired,
+    userHasVote: PropTypes.bool.isRequired
+    }).isRequired,
   };
 
-  blah = (event) => { 
-    console.log(' blah blah blah ');
+  clickVote = (blah, item) => {
+
+    // console.log('blah blah lbah ', blah);
+
+    if (blah.item.userHasVote) {
+
+      console.log('blah item', blah.item);
+
+      console.log('user has vote ');
+      // if a user has a vote, send call to delete method
+
+    } else {
+
+      console.log('user does not have vote');
+      // if a user does not have a vote, send call to put vote method
+
+    }
+
   }
 
-  clickVote = (event) => {
-    console.log('vote clicked');
+  // params:
+  // condition
+  // class returned if true 
+  classIf = ( condition, cssClass ) => {
+  
+    if (condition) {
+
+      return cssClass;
+    
+    } else {
+
+      return ''; 
+    
+    }
+
   }
 
   render() {
 
-    console.log(this.props);
+    console.log('placetag ', this.props.item.userHasVote);
+
 
     return (
-      <div className={`row ${s.placeTagContainer}`} onClick={this.clickVote}>
+      <div className={`row ${s.placeTagContainer} ${this.classIf(this.props.item.userHasVote, s.testClass)}`} onClick={this.clickVote.bind(this, this.props)}>
         <div className={`col-xs-1`}>
           <div className={s.placeTagVotes}>
             <div className={`fa fa-caret-up ${s.votesIcon}`}></div>
@@ -44,7 +74,7 @@ class PlaceTag extends React.Component {
         </div>  
         <div className={`col-xs-2`}>
           <div className={s.placeTagIcon}>
-            <div className={`fa fa-caret-up`}></div>
+            <div className={`fa fa-facebook`}></div>
           </div>
         </div>
         <div className={`col-xs-9`}>
@@ -59,6 +89,7 @@ class PlaceTag extends React.Component {
                 <li><Link to="/login">lorem</Link></li>
               </ul>
                 <Link to="/login">View more > </Link>
+                <span>{this.props.item.userHasVote} </span>
             </div>
           </div>
         </div>
@@ -74,61 +105,44 @@ class Place extends React.Component {
       categorySlug: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
+      userHasVote: PropTypes.bool.isRequired,
     })).isRequired,
   };
 
-
+  blah = (event) => { 
+    console.log(' blah blah blah ');
+  }
 
   render() {
 
     return (
       <div className={s.root}>
-        <div className={`container ${s.container}`}>
-          <div className={`row ${s.placeHeaderRow + ' ' + s.topBottomMargin}`}>
-            <div className={`col-xs-6`}>
-              <h1>stuff stuff stuff stuff </h1>
-              <p> description automatically generated from certain tags</p>
-              <button className={`${s.voteButton}`} onClick={this.blah}>
-                <div><span className={`fa fa-caret-up`}></span> 123</div>
-              </button>
-            </div>
-            <div className={`col-xs-6 ${s.socialButtonContainerOutter}`}>
-                <div className={`${s.socialButtonContainer}`}>
-                  <button className={`fa fa-facebook ${s.facebookBgColor}`} onClick={this.blah}></button>
-                  <button className={`fa fa-twitter ${s.twitterBgColor}`} onClick={this.blah}></button>
-                  <button className={`fa fa-pinterest ${s.pinterestBgColor}`} onClick={this.blah}></button>
-                </div>
-            </div>
+        <div className={`row ${s.placeHeaderRow}`}>
+          <div className={`col-xs-6`}>
+            <h1>{this.props.title}</h1>
+            <p> description automatically generated from certain tags</p>
+            <button className={`${s.voteButton}`} onClick={this.blah}>
+              <div><div className={`${s.voteButtonIcon} fa fa-caret-up`}></div><span> 123</span></div>
+            </button>
+          </div>
+          <div className={`col-xs-6 ${s.socialButtonContainerOutter}`}>
+          <div className={`${s.socialButtonContainer}`}>
+            <button className={`fa fa-facebook ${s.facebookBgColor}`} onClick={this.blah}></button>
+            <button className={`fa fa-twitter ${s.twitterBgColor}`} onClick={this.blah}></button>
+            <button className={`fa fa-pinterest ${s.pinterestBgColor}`} onClick={this.blah}></button>
+          </div>
           </div>
         </div>
-        <div className={`container-fluid ${s.container}`}>
-          <h1 className={s.title}></h1>
-
           <ul className={s.placeTagListWrapper}>
+            <li>
+              <div className={s.placeTagListTitle}><h2 className={s.title}>{this.props.title} is known for</h2></div>
+            </li>
             {this.props.votes.map((item, index) => (
-              <li key={index} className={s.newsItem}>
-
-                <PlaceTag item = {item}/>
-              
+              <li key={index}>
+                <PlaceTag item = {item}/>              
               </li>
             ))}
           </ul>
-          <div className={`row`} style={{border: '5px solid orange'}}>
-            <div className={`col-xs-12 col-md-6 col-lg-3 box ${s.imageBox}`}>
-              <img src={'http://lorempixel.com/450/300/'}/>
-            </div>
-            <div className={`col-xs-12 col-md-6 col-lg-3 box ${s.imageBox}`}>
-              <img src={'http://lorempixel.com/450/300/'}/>
-            </div>
-            <div className={`col-xs-12 col-md-6 col-lg-3 box ${s.imageBox}`}>
-              <img src={'http://lorempixel.com/450/300/'}/>
-            </div>
-            <div className={`col-xs-12 col-md-6 col-lg-3 box ${s.imageBox}`}>
-              <img src={'http://lorempixel.com/450/300/'}/>
-            </div>
-          </div>
-        </div>
-
       </div>
     );
   }

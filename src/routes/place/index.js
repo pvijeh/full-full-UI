@@ -11,6 +11,7 @@ import React from 'react';
 import Place from './Place';
 import fetch from '../../core/fetch';
 import Layout from '../../components/Layout';
+import _ from 'lodash';
 
 export default {
 
@@ -28,6 +29,8 @@ export default {
 
     const data = await resp.json();
 
+    console.log('data', data);
+
     const categoryDescriptions = {
       category1 : "category1 lorem lorem lorem lorem lorem lorem",
       category2 : "category2 lorem lorem lorem lorem lorem lorem",
@@ -43,11 +46,15 @@ export default {
 
     let counts = [];
     let alreadyAdded = {};
-    let i = i; 
+    let i = 0; 
+
+    console.log('lodash',  _.sortBy );
 
     for ( i = 0; i < data.votes.length; i++ ) {
       
       let value = data.votes[i].categorySlug;
+
+      let userHasVote = Math.random() < 0.3;
 
       if ( alreadyAdded[value] === undefined ) {
 
@@ -56,7 +63,8 @@ export default {
         let item = {
           categorySlug : value,
           description: categoryDescriptions[value],
-          count: alreadyAdded[value]
+          count: alreadyAdded[value],
+          userHasVote: userHasVote
         }
 
         counts.push(item);
@@ -73,12 +81,16 @@ export default {
       }
     }
 
+    counts = _.sortBy(counts, 'count').reverse();
+
+    console.log(counts);
+
     if (!data) throw new Error('Failed to load the news feed.');
 
     return {
-      title: 'title title title',
+      title: params.placeSlug,
       description: 'blah blah blah',
-      component: <Layout><Place votes={ counts } /></Layout>,
+      component: <Layout><Place votes={ counts } title={params.placeSlug} description={'blah blah blah'}/></Layout>,
     };
   },
 
