@@ -13,15 +13,13 @@ import Page from '../../components/Page';
 
 export default {
 
-  path: '/about',
+  path: '/privacy',
 
   async action() {
     const data = await new Promise((resolve) => {
       require.ensure([], require => {
-
-        resolve();
-
-      }, 'about');
+        resolve(require('./privacy.md'));
+      }, 'privacy');
     });
 
     return {
