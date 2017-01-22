@@ -30,45 +30,30 @@
     "id": "navigation.about",
     "defaultMessage": "About",
     "message": "O nás",
-    "description": "About link in header",
-    "files": [
-      "src/components/Navigation/Navigation.js"
-    ]
+    "description": "About link in header"
   },
   {
     "id": "navigation.contact",
     "defaultMessage": "Contact",
     "message": "Kontakt",
-    "description": "Contact link in header",
-    "files": [
-      "src/components/Navigation/Navigation.js"
-    ]
+    "description": "Contact link in header"
   },
   {
     "id": "navigation.login",
     "defaultMessage": "Log in",
     "message": "Přihlásit",
-    "description": "Log in link in header",
-    "files": [
-      "src/components/Navigation/Navigation.js"
-    ]
+    "description": "Log in link in header"
   },
   {
     "id": "navigation.signup",
     "defaultMessage": "Sign up",
     "message": "Registrace",
-    "description": "Sign up link in header",
-    "files": [
-      "src/components/Navigation/Navigation.js"
-    ]
+    "description": "Sign up link in header"
   },
   {
     "id": "navigation.separator.or",
     "defaultMessage": "or",
     "message": "nebo",
-    "description": "Last separator in list, lowercase \"or\"",
-    "files": [
-      "src/components/Navigation/Navigation.js"
-    ]
+    "description": "Last separator in list, lowercase \"or\""
   }
 ]

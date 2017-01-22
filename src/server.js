@@ -35,6 +35,7 @@ import assets from './assets'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
 import { setLocale } from './actions/intl';
+import { getPlaceVotes } from './actions/getPlaceVotes';
 import { port, auth, locales } from './config';
 
 const app = express();
