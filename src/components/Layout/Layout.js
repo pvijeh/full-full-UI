@@ -12,6 +12,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Layout.css';
 import Header from '../Header';
 import Footer from '../Footer';
+import Modal from '../Modal';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -22,6 +23,7 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
+        <Modal />
         {this.props.children}
         <Footer />
       </div>

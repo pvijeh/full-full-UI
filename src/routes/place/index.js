@@ -21,13 +21,14 @@ export default {
   async action({ params, store }) {
 
     await store.dispatch(getPlaceVotes(params.placeSlug));
+
+    getPlaceVotes(params.placeSlug);
+
     const state = await store.getState();
 
+    console.log('state------------->>>', state );    
 
-    console.log('state------------->>>', state );
-    
-
-    const votes = state.getPlaceVotes.votes;
+    const votes = state.getPlaceVotesReducer.votes;
 
     const categoryDescriptions = {
       category1 : "category1 lorem lorem lorem lorem lorem lorem",
@@ -44,7 +45,7 @@ export default {
 
     let counts = [];
     let alreadyAdded = {};
-    let i = 0; 
+    let i = 0;
 
     for ( i = 0; i < votes.length; i++ ) {
       

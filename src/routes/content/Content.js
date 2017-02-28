@@ -36,6 +36,10 @@ class Content extends Component {
   }
 
   maybeFetchData(props) {
+
+    console.log('props------>', props);
+    console.log('props------>', this.props);
+
     const { path, locale, content, getContent } = props || this.props;
     if (!content) {
       getContent({ path, locale });

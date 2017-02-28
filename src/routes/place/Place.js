@@ -11,6 +11,8 @@ import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Place.css';
 import Link from '../../components/Link';
+import fetch from '../../core/fetch';
+import { getPlaceVotes } from '../../actions/getPlaceVotes';
 
 class PlaceTag extends React.Component {
   static propTypes = {
@@ -23,11 +25,11 @@ class PlaceTag extends React.Component {
   };
 
   addVote = () => {
+    console.log('stuffffffffffffff');
     // API path
     // category
     // place 
     // user 
-
   }
 
   deleteVote = () => {
@@ -35,27 +37,18 @@ class PlaceTag extends React.Component {
     // user
     // place
     // category 
-
   }
 
   clickVote = (blah, item) => {
-
     // console.log('blah blah lbah ', blah);
-
     if (blah.item.userHasVote) {
-
       console.log('blah item', blah.item);
-
       console.log('user has vote ');
       // if a user has a vote, send call to delete method
-
     } else {
-
       console.log('user does not have vote');
       // if a user does not have a vote, send call to put vote method
-
     }
-
   }
 
   // params:
@@ -125,7 +118,47 @@ class Place extends React.Component {
   };
 
   blah = (event) => { 
-    console.log(' blah blah blah ');
+
+
+
+    (async ({ store }) => {
+      let data = {
+        categorySlug: 'category1',
+        placeSlug: 'place1'
+      }
+
+      try {
+        const resp = await fetch('http://localhost:5000/votes', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+
+      });
+
+      const testData = await resp.json();
+
+      console.log('testData', testData);
+
+      getPlaceVotes('place1');
+
+      const state = await store.getState();
+
+      console.log(state);
+
+
+      } catch (error) {
+
+        console.log('error', error);
+
+        return false;
+      }
+
+      return true;
+    })();
   }
 
   render() {
@@ -158,6 +191,7 @@ class Place extends React.Component {
               </li>
             ))}
           </ul>
+          <button onClick={this.blah}>stuffffffffffff</button>
       </div>
     );
   }

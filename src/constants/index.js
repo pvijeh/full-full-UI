@@ -14,7 +14,19 @@ export const FETCH_PLACES_START = 'FETCH_PLACES_START';
 export const FETCH_PLACES_SUCCESS = 'FETCH_PLACES_SUCCESS';
 export const FETCH_PLACES_ERROR = 'FETCH_PLACES_ERROR';
 
+export const ADD_VOTE_START = 'ADD_VOTE_START';
+export const ADD_VOTE_SUCCESS = 'ADD_VOTE_SUCCESS';
+export const ADD_VOTE_USER_NOT_LOGGEDIN = 'ADD_VOTE_USER_NOT_LOGGEDIN';
+export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
+
 
 // API End Points
 
 export const API_VOTES_PLACE = 'http://localhost:5000/votes/place/';
+export const API_POST_VOTE = 'http://localhost:5000/votes';
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import fetch from '../core/fetch';
+import apiCalls from '../lib/apiCalls';
 import {
   FETCH_PLACES_START,
   FETCH_PLACES_SUCCESS,
@@ -8,9 +9,14 @@ import {
   API_VOTES_PLACE
 } from '../constants';
 
-// export function getPlaceVotes({ locale }) {
 export function getPlaceVotes(placeSlug) {
+
+// console.log('bhallllllllllllllllllllllllllllllllll');
+
   return async (dispatch, getState ) => {
+    // console.log('styff');
+    // console.log('dispatch', dispatch);
+    // console.log('getState', getState);
 
     dispatch({
       type: FETCH_PLACES_START,
@@ -19,16 +25,16 @@ export function getPlaceVotes(placeSlug) {
 
     try {
 
-      const resp = await fetch(`${API_VOTES_PLACE+placeSlug}`, {
-      method: 'get',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
+    const resp = await apiCalls({ 
+      action: 'get',
+      endpoint: API_VOTES_PLACE,
+      slug: placeSlug,
+      data: ''
     });
 
     const testData = await resp.json();
+
+    console.log('testData-------->', testData);
 
       dispatch({
         type: FETCH_PLACES_SUCCESS,
@@ -38,6 +44,8 @@ export function getPlaceVotes(placeSlug) {
       });
 
     } catch (error) {
+
+      console.log('styff');
 
       console.log('error', error);
 
@@ -49,6 +57,8 @@ export function getPlaceVotes(placeSlug) {
       });
       return false;
     }
+
+    console.log('styff');
 
     return true;
   };

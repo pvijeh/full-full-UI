@@ -15,7 +15,6 @@ import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
 import LanguageSwitcher from '../LanguageSwitcher';
-import TestComponent from '../TestComponent';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
@@ -36,8 +35,6 @@ const messages = defineMessages({
   },
 });
 
-          // <LanguageSwitcher />
-
 class Header extends React.Component {
   render() {
     return (
@@ -47,7 +44,7 @@ class Header extends React.Component {
           <Link className={s.brand} to="/">
             <img src={logoUrl} srcSet={`${logoUrl2x} 2x`} width="38" height="38" alt="React" />
           </Link>
-          <TestComponent />
+          <LanguageSwitcher />
           <FormattedMessage {...messages.bannerTitle} />
           <FormattedMessage tagName="p" {...messages.bannerDesc} />
         </div>

@@ -64,8 +64,6 @@ class App extends React.PureComponent {
       this.unsubscribe = store.subscribe(() => {
         const state = store.getState();
 
-        console.log('state-------->>>>>>',state);
-
         const newIntl = state.intl;
         if (this.intl !== newIntl) {
           this.intl = newIntl;
