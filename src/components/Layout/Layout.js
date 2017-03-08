@@ -13,6 +13,9 @@ import s from './Layout.css';
 import Header from '../Header';
 import Footer from '../Footer';
 import Modal from '../Modal';
+import Login from '../modalContent/Login';
+
+let blah = <Login/>;
 
 class Layout extends React.Component {
   static propTypes = {
@@ -23,8 +26,8 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
-        <Modal />
-        {this.props.children}
+        <Modal/>        
+          {this.props.children}
         <Footer />
       </div>
     );
@@ -32,3 +35,4 @@ class Layout extends React.Component {
 }
 
 export default withStyles(s)(Layout);
+

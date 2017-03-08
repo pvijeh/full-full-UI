@@ -8,31 +8,65 @@
  */
 
 import React, { PropTypes } from 'react';
-// import { connect } from 'react-redux';
-// import { getPlaceVotes } from '../../actions/getPlaceVotes';
-// import { addPlaceVotes } from '../../actions/addPlaceVote';
+import { connect } from 'react-redux';
+import { toggleModal } from '../../actions/modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Modal.css';
-// import Link from '../Link';
 
-const fakeModalData = {
-    title: <h3>HEY HEY HEY HEY TITLE </h3>
-}
+import Login from '../modalContent/Login';
 
-let hey = true;
+// if display is true, show the modal
+// if width is narrow (string), add the narrow class
 
-function Modal({}) {
-    let title = <h3>hey ddddddddudeeeeeeeee</h3>;
+function Modal({ showModal, modalContent, toggleModal }) {
+    let element = null;
+    let content = null;
+    let title ='title';
 
-    return (
-      <div className={s.root}>
+    if (modalContent) {
+        switch(modalContent) {
+            case 'login':
+            content = <Login/>
+            title = 'Continue with Facebook';
+            break;
+        }
+    }
+
+    if (showModal) {
+        element = <div className={s.root}>
         <div className={s.modalContainer}>
-        {title}
-        modal modal modal !!!!!!!!!!!!!!!
-        <button>close button</button> 
+            <h3>{title}</h3>
+        <div className={s.modalContent}>
+            {content}
         </div>
+        <button 
+            onClick={(e) => {
+                toggleModal(false);
+                e.preventDefault();
+            }} 
+            className={s.closeButton}
+        >Close</button>    
+        </div>
+      </div>;
+    }
+    return (
+      <div>
+      <button onClick={(e) => {
+                toggleModal(true, 'login');
+                e.preventDefault();
+            }}>show modal</button>
+      {element}
       </div>
     );
 }
 
-export default withStyles(s)(Modal);
+const mapState = (state) => ({
+  showModal: state.modalReducer.showModal,
+  modalContent: state.modalReducer.modalContent,
+});
+
+const mapDispatch = {
+  toggleModal,
+};
+
+export default withStyles(s)(connect(mapState, mapDispatch)(Modal));

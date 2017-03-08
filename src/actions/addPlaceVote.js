@@ -31,20 +31,9 @@ export function addPlaceVotes( placeSlug, categorySlug ) {
 
     let testData = await resp.json();
 
-    console.log('testData--->', testData);    
-
-    console.log('testData.loggedIn--------->', testData.loggedIn );
-
-    console.log('testData.loggedIn ===', testData.loggedIn === 'false');
-
     if ( testData.loggedIn === 'false' ) {
-      console.log(11111111113);
-
-      console.log(' YOOOOOOOOO!!!!!!!! ');
-
 
     } else {
-      console.log(2222222223);
       dispatch({
         type: ADD_VOTE_SUCCESS,
         payload: {

@@ -1,0 +1,71 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../../variables.css';
+
+.root {
+  text-align: center;
+  color: white;
+  width: 90vw;
+  max-width: 350px;
+
+    .loginDisclaimerText {
+        max-width: 230px;
+        margin: 20px auto 0px auto;
+        font-size: 12px;
+
+        a {
+            font-size: 12px;
+        }
+    }
+
+    .promptText{
+        max-width: 200px;
+        margin-bottom: 20px;
+        margin: 0px auto 20px auto;
+    }
+}
+
+.loginLogo {
+    vertical-align: top;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 40px;
+    display: inline-block;
+    color: white;
+    background-color: var(--facebook);
+}
+
+.loginTextArea {
+    width: 180px;
+    display: inline-block;
+    height: 60px;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    background-color: var(--facebook);
+
+    p {
+        line-height: 16px;
+        color: white !important;
+        font-size: 14px;
+        font-weight: bold;
+        position: absolute;
+        left: 5%;
+        width: 80%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
+
+
+

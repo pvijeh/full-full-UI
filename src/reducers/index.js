@@ -3,6 +3,7 @@ import user from './user';
 import runtime from './runtime';
 import intl from './intl';
 import getPlaceVotesReducer from './getPlaceVotesReducer';
+import modalReducer from './modalReducer';
 import content from './content';
 
 export default combineReducers({
@@ -11,4 +12,5 @@ export default combineReducers({
   intl,
   getPlaceVotesReducer,
   content,
+  modalReducer,
 });

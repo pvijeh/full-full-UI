@@ -87,7 +87,7 @@
   }
 
   a {
-
+    color: var(--font-hover-color);
     cursor: pointer;
     
     &:hover {

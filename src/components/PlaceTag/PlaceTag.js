@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import { getPlaceVotes } from '../../actions/getPlaceVotes';
 import { addPlaceVotes } from '../../actions/addPlaceVote';
+import { toggleModal } from '../../actions/modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './PlaceTag.css';
 import Link from '../Link';
@@ -111,6 +112,7 @@ const mapState = null;
 
 const mapDispatch = {
   addPlaceVotes,
+  toggleModal,
 };
 
 const EnhancedPlaceTag = connect(mapState, mapDispatch)(PlaceTag);
