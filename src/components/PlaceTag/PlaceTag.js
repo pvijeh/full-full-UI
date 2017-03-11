@@ -9,68 +9,46 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './PlaceTag.css';
 import Link from '../Link';
 
-const addVote = () => {
-    console.log('stuffffffffffffff');
-    // API path
-    // category
-    // place 
-    // user 
-  }
 
-  const deleteVote = () => {
-    // API path 
-    // user
-    // place
-    // category 
-  }
+  // need to pass in information about user state 
 
-  const clickVote = (item, placeSlug, event) => {
-    console.log('slug!!!!!!!!', placeSlug);
-    console.log('event!!!!!!', event);
-    // addPlaceVotes( placeSlug, item.categorySlug );
-    addPlaceVotes('place1', 'category1');
-    console.log('item-----------||||||', item );
+  const clickVote = (item, placeSlug) => {
+    console.log('slug!!!!!!!!', placeSlug );
+    console.log('event!!!!!!', event );
+    console.log('item-------->', item );
 
     if (item.userHasVote) {
-      console.log('blah item', item);
+      console.log('user has vote -- delete it ');
+      addPlaceVotes( placeSlug, item.categorySlug );
       console.log('user has vote ');
-
-
       // if a user has a vote, send call to delete method
     } else {
-      console.log('user does not have vote');
+      console.log('user vote added');
+      addPlaceVotes( placeSlug, item.categorySlug );
       // if a user does not have a vote, send call to put vote method
     }
   }
+
+
 
   // params:
   // condition
   // class returned if true 
   const classIf = ( condition, cssClass ) => {
-  
     if (condition) {
-
       return cssClass;
-    
     } else {
-
       return ''; 
-    
     }
-
   }
 
-function PlaceTag({ item, addPlaceVotes, placeSlug }) {
-
-  console.log('item.userHasVote',item.categorySlug,  item.userHasVote);
+function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal }) {
 
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
-      onClick={(e) => {
-        addPlaceVotes(placeSlug, item.categorySlug);
-        e.preventDefault();
-      }}
-    >
+      onClick={()=>{
+        clickVote( item, placeSlug );
+      }}>
       <div className={`col-xs-1`}>
         <div className={s.placeTagVotes}>
           <div className={`fa fa-caret-up ${s.votesIcon}`}></div>
