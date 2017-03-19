@@ -51,12 +51,7 @@ function Modal({ showModal, modalContent, toggleModal }) {
     }
     return (
       <div>
-      <button onClick={(e) => {
-                console.log(' yo yo yo ');
-                toggleModal(true, 'login');
-                e.preventDefault();
-            }}>Show modal</button>
-      {element}
+        {element}
       </div>
     );
 }

@@ -10,21 +10,283 @@
 @import '../../components/variables.css';
 
 .root {
-    padding-left: 20px;
-    padding-right: 20px;
-}
+  background-color: rgb(240, 240, 240);
+  padding-top: 10px;
+  padding-bottom: 20px;
 
-.container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: var(--max-content-width);
-}
+    .placeHeaderRow {
+      background: #000000; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #000000 , #434343); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #000000 , #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+      max-width: 800px;
+      padding: 20px;
+      margin: 10px auto 20px auto;
+      border-radius: 2px;
 
-.fetching {
-  color: rgba(0, 0, 0, 0.5);
-}
+      h1 {
+        line-height:0.8;
+      }
 
-li {
+      h1, p, span {
+        color: white;
+      }
+
+      .voteButton {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        padding: 10px 10px 10px 40px;
+        position: relative;
+        transition: 0.3s;
+
+        span {
+          text-align: right;
+          color: black;  
+        }
+
+        &:hover {
+          .voteButtonIcon, span { 
+            color: var(--font-hover-color);
+          }  
+        }    
+
+        .voteButtonIcon {
+          position: absolute;
+          line-height: 14px;
+          height: 14px;
+          position: absolute;
+          left: 15px;
+          font-size: 30px;
+        }
+      }
+    }
+
+  .placeTagListWrapper {
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    max-width: 750px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .placeTagListTitle {
+      padding: 20px 30px;
+      border-bottom: 1px solid #cccccc;
+      background-color: white;
+      
+      h2 {
+        margin:0;
+      }
+    }
+
+    li:last-child {
+      .placeTagContainer {
+        border-bottom: none;
+      }
+    }
+  }
+
+  button {
+    transition: 0.3s;
+    padding: 5px 5px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: none;
+
+    span {
+      color: black;
+      margin: 0;
+      transition: 0.3s;
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: var(--font-hover-color);
+      
+      span {
+        color: var(--font-hover-color);
+      }
+    }
+
+    &.active {
+     color: var(--font-hover-color); 
+     
+     span {
+        color: var(--font-hover-color);
+      }
+    }
+
+  }
+
+  .containerfullwidth {
     padding: 0;
-    list-style-type: none;
+    border-bottom: 1px solid #cccccc;
+  }
+
+.imageBox {
+  padding: 0; 
+  
+  img {
+    width: 100%;
+  }
+}
+
+.socialButtonContainerOutter {
+  position: relative;
+}
+
+.socialButtonContainer {
+  position: absolute;
+  right:  10px;
+  bottom: 0;
+
+  button {
+    margin-left: 15px;
+    width: 75px;
+    color: white;
+  }
+}
+
+
+
+.facebookBgColor {
+  background-color: var(--facebook);
+  color: white;
+}
+
+.twitterBgColor {
+  background-color: var(--twitter);
+  color: white;
+}
+
+.pinterestBgColor {
+  background-color: var(--pinterest);
+  color: white;
+}
+
+.placeTagContainer {
+  background-color: white;
+  width: 100%;
+  color: black;
+  margin: auto;
+  border-bottom: 1px solid #ccc;
+  opacity: 0.8;
+  padding: 10px;
+  display: flex;
+  position:relative;
+  z-index: 1;
+  transition: 0.3s;
+  align-items: center;
+  cursor: pointer;
+
+  &.testClass {
+    border: 5px solid blue !important;
+    background-color: red !important;
+  }
+
+  h4 {
+    line-height: .8;
+  }
+  
+  &:hover {
+    opacity:1;
+    background-color: rgba(0,0,0,0.05);
+  }
+
+  span {
+    margin:0;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    width: 100%;
+    clear: both;
+  }
+
+  .placeTagVotes {
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    background-color:white;
+    transition: 0.3s;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.10);
+
+    &:hover{
+      border: 1px solid var(--font-hover-color);
+      background-color: rgba(0,0,0,0.1);
+      color: var(--font-hover-color);
+    };
+  }
+
+  .votesIcon {
+    font-size: 35px;
+    line-height: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .placeTagIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      font-size: 60px;
+    }
+  }
+
+  .placeMiddleSection {
+    min-height: 75px;
+    width: 100%;
+  }
+
+  .placeSimilarContainer {
+    font-size: 12px;
+
+    ul {
+      text-decoration: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      font-size: 12px;
+      margin-right: 15px;
+    }
+
+    li {
+      width: 100%;
+      max-width: 750px;
+      display: inline;
+      padding: 2px 5px;
+      background-color: white;
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 2px;
+      margin: 5px;
+      font-size: 12px;
+      
+      &:hover {
+        background-color: rgba(0,0,0,0.1);
+      }
+      
+    }
+
+    a {
+      
+      font-size: 12px;
+      z-index: 2;
+      
+      &:hover {
+      
+      };
+    }
+
+  }
+}
+
 }

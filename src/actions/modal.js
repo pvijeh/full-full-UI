@@ -9,8 +9,15 @@ import {
 // modal content 
 
 export function toggleModal( showModal, modalContent ) {
+
+  console.log('modal !!!!!!');
+
+  console.log('showModal', showModal);
+  console.log('modalContent', modalContent);
+
   return ( dispatch )=>{
       if (showModal === true ) {
+        console.log('show modal ');
         dispatch({
           type: SHOW_MODAL,
           payload: modalContent,

@@ -11,9 +11,8 @@ const defaultAction = {
 }
 
 export default function modalReducer(state = null, action = defaultAction ) {
-  if (state === null) {
 
-    console.log('NULLLLLLLLLLLLLLLLLLLLLLL');
+  if (state === null) {
 
     return {
       showModal: false,

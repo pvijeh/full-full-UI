@@ -90,13 +90,35 @@ class TestContent extends Component {
 
     counts = _.sortBy(counts, 'count').reverse();
 
+    console.log(' props!!!!!!!', this.props );
+
+    console.log('content !!!!!!!!!!!!!!! =========>', content);
+
     return (
       <div className={s.root}>
-        { counts.map((item, index) => (
-          <li key={index}>
-            <PlaceTag item={item} placeSlug={placeSlug}/>
-          </li>
-        ))}
+        <div className={`row ${s.placeHeaderRow}`}>
+          <div className={`col-xs-6`}>
+            <h1>{this.props.title}</h1>
+            <p> description automatically generated from certain tags</p>
+            <button className={`${s.voteButton}`} onClick={this.blah}>
+              <div><div className={`${s.voteButtonIcon} fa fa-caret-up`}></div><span> 123</span></div>
+            </button>
+          </div>
+          <div className={`col-xs-6 ${s.socialButtonContainerOutter}`}>
+          <div className={`${s.socialButtonContainer}`}>
+            <button className={`fa fa-facebook ${s.facebookBgColor}`} onClick={this.blah}></button>
+            <button className={`fa fa-twitter ${s.twitterBgColor}`} onClick={this.blah}></button>
+            <button className={`fa fa-pinterest ${s.pinterestBgColor}`} onClick={this.blah}></button>
+          </div>
+          </div>
+        </div>
+        <ul className={s.placeTagListWrapper}>
+          { counts.map((item, index) => (
+            <li key={index}>
+              <PlaceTag item={item} placeSlug={placeSlug} user={content.getPlaceVotesReducer.user} />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

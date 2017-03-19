@@ -13,6 +13,8 @@ import {
 
 export function addPlaceVotes( placeSlug, categorySlug ) {
 
+  console.log('add place vote');
+
   return async (dispatch, getState ) => {
 
     dispatch({

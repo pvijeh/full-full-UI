@@ -30,8 +30,8 @@ export default {
       // console.log('state------------->>>', state );    
 
       return {
-        title: 'title',
-        component: <Layout><Content placeSlug={params.placeSlug}/></Layout>,
+        title: 'title'+params.placeSlug,
+        component: <Layout><Content placeSlug={params.placeSlug} title={params.placeSlug}/></Layout>,
       };
     } catch (e) {
       throw new Error(e);

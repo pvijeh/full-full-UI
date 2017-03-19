@@ -13,6 +13,7 @@ const defaultAction = {
 }
 
 export default function getPlaceVotesReducer(state = null, action = defaultAction ) {
+
   if (state === null) {
     return {
       votes: []
@@ -31,7 +32,8 @@ export default function getPlaceVotesReducer(state = null, action = defaultActio
       return {
         ...state,
         votes: action.payload.testData.votes,
-        user: action.payload.testData.user
+        user: action.payload.testData.user,
+        place: action.payload.testData.place
       };
     }
 

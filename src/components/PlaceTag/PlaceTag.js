@@ -9,28 +9,21 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './PlaceTag.css';
 import Link from '../Link';
 
+  const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
 
-  // need to pass in information about user state 
-
-  const clickVote = (item, placeSlug) => {
-    console.log('slug!!!!!!!!', placeSlug );
-    console.log('event!!!!!!', event );
-    console.log('item-------->', item );
-
-    if (item.userHasVote) {
-      console.log('user has vote -- delete it ');
-      addPlaceVotes( placeSlug, item.categorySlug );
-      console.log('user has vote ');
-      // if a user has a vote, send call to delete method
+    console.log(' stuffffffffffff ');
+    
+    if ( !user ) {
+      console.log(' not logged in !');
+      modalTog( true, 'login' );
     } else {
-      console.log('user vote added');
-      addPlaceVotes( placeSlug, item.categorySlug );
-      // if a user does not have a vote, send call to put vote method
+      console.log(' logged in !');
+      addVote(placeSlug, item.categorySlug);  
     }
-  }
+  } 
 
-
-
+  // should move this to lib  
+  
   // params:
   // condition
   // class returned if true 
@@ -42,12 +35,12 @@ import Link from '../Link';
     }
   }
 
-function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal }) {
+function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
 
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
-        clickVote( item, placeSlug );
+        clickVote( item, placeSlug, user, addPlaceVotes, toggleModal );
       }}>
       <div className={`col-xs-1`}>
         <div className={s.placeTagVotes}>
