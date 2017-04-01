@@ -21,8 +21,8 @@ export default {
     require('./login').default,
     require('./register').default,
     require('./admin').default,
-    require('./place').default,
-    require('./testcontent').default,
+    require('./places').default,
+    require('./categories').default,
 
 
     // Wildcard routes, e.g. { path: '*', ... } (must go last)

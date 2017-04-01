@@ -10,7 +10,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Content.css';
+import s from './Places.css';
 import _ from 'lodash';
 import { selectContent } from '../../reducers/content';
 import getPlaceVotesReducer from '../../reducers/getPlaceVotesReducer';
@@ -22,7 +22,7 @@ import GetVotesButton from '../../components/GetVotesButton';
 import apiCalls from '../../lib/apiCalls';
 import { API_POST_VOTE } from '../../constants';
 
-class TestContent extends Component {
+class Places extends Component {
 
   componentDidMount() {
     this.maybeFetchData();
@@ -41,8 +41,6 @@ class TestContent extends Component {
 
   render() {
 
-    // should try to move this logic into a lib or something
-
     const { path, content } = this.props;
     let votes = content.getPlaceVotesReducer.votes;
     let user = content.getPlaceVotesReducer.user;
@@ -53,46 +51,44 @@ class TestContent extends Component {
     let i = 0;
     let categoriesWithUserVotes = {};
 
-    for ( i = 0; i < votes.length; i++ ) {
+    if (votes && votes.length > 0) {
+      for ( i = 0; i < votes.length; i++ ) {
 
-      let currentVote = votes[i];
+        let currentVote = votes[i];
 
-      if ( user === currentVote.userId ) {
-        categoriesWithUserVotes[user] = true
-      }
-      
-      let value = currentVote.categorySlug;
-
-      if ( alreadyAdded[value] === undefined ) {
-        alreadyAdded[value] = 1;
-
-        let item = {
-          categorySlug : value,
-          description: currentVote.categoryDescription,
-          count: alreadyAdded[value],
-          userHasVote: categoriesWithUserVotes[currentVote.userId]
+        if ( user === currentVote.userId ) {
+          categoriesWithUserVotes[user] = true
         }
+        
+        let value = currentVote.categorySlug;
 
-        counts.push(item);
+        if ( alreadyAdded[value] === undefined ) {
+          alreadyAdded[value] = 1;
 
-      } else {
-
-        ++alreadyAdded[value];
-
-        for ( let i = 0; i < counts.length; i++ ) {
-          if ( counts[i].categorySlug === value ) {
-            counts[i].count = alreadyAdded[value];
-            counts[i].userHasVote = categoriesWithUserVotes[currentVote.userId];
+          let item = {
+            categorySlug : value,
+            description: currentVote.categoryDescription,
+            count: alreadyAdded[value],
+            userHasVote: categoriesWithUserVotes[currentVote.userId]
           }
-        }          
+
+          counts.push(item);
+
+        } else {
+
+          ++alreadyAdded[value];
+
+          for ( let i = 0; i < counts.length; i++ ) {
+            if ( counts[i].categorySlug === value ) {
+              counts[i].count = alreadyAdded[value];
+              counts[i].userHasVote = categoriesWithUserVotes[currentVote.userId];
+            }
+          }          
+        }
       }
     }
-
+    
     counts = _.sortBy(counts, 'count').reverse();
-
-    console.log(' props!!!!!!!', this.props );
-
-    console.log('content !!!!!!!!!!!!!!! =========>', content);
 
     return (
       <div className={s.root}>
@@ -132,7 +128,7 @@ const mapDispatch = {
   getPlaceVotesAction,
 };
 
-const EnhancedContent = connect(mapState, mapDispatch)(TestContent);
+const EnhancedContent = connect(mapState, mapDispatch)(Places);
 
 export default withStyles(s)(EnhancedContent);
 

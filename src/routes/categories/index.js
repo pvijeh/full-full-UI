@@ -9,29 +9,24 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Content from './Content';
-// import { getContent } from '../../actions/content';
-// import { selectContent } from '../../reducers/content';
+import Categories from './Categories';
+// need to replace this with get category votes
 import { getPlaceVotes } from '../../actions/getPlaceVotes';
 import { addPlaceVotes } from '../../actions/addPlaceVote';
 
 export default {
 
-  path: '/testcontent/:placeSlug',
+  path: '/best-of/:categorySlug',
 
   async action({ path, store, params }) { // eslint-disable-line react/prop-types
     try {
-      // await store.dispatch(getContent({ path }));
-      // const data = selectContent(store.getState(), { path });
 
-      await store.dispatch(getPlaceVotes(params.placeSlug));
-      // getPlaceVotes(params.placeSlug);
-      // const state = await store.getState();
-      // console.log('state------------->>>', state );    
+      await store.dispatch(getPlaceVotes(params.categorySlug));
+      const state = await store.getState();
 
       return {
-        title: 'title'+params.placeSlug,
-        component: <Layout><Content placeSlug={params.placeSlug} title={params.placeSlug}/></Layout>,
+        title: 'title'+params.categorySlug,
+        component: <Layout><Categories categorySlug={params.categorySlug} title={'this is a sample category'}/></Layout>,
       };
     } catch (e) {
       throw new Error(e);

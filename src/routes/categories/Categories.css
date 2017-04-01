@@ -6,12 +6,38 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+
 @import '../../components/variables.css';
 
 .root {
   background-color: rgb(240, 240, 240);
   padding-top: 10px;
   padding-bottom: 20px;
+
+    .placeHeaderRow {
+      text-align: center;
+      max-width: 800px;
+      padding: 20px;
+      margin: 10px auto 20px auto;
+      border-radius: 2px;
+
+      h1 {
+        line-height: 1;
+        margin: 10px auto 20px auto;
+        max-width: 600px;
+        width: 90%;
+      }
+
+      p {
+        max-width: 500px;
+        width: 90%;
+        margin: auto;
+      }
+
+      h1, p, span {
+        color: #000;
+      }
+    }
 
   .placeTagListWrapper {
     border-radius: 2px;
@@ -87,66 +113,14 @@
   }
 }
 
-.socialButtonContainerOutter {
-  position: relative;
-}
-
 .socialButtonContainer {
-  position: absolute;
-  right:  10px;
-  bottom: 0;
+  position: relative;
+  margin: 20px auto;
 
   button {
     margin-left: 15px;
     width: 75px;
     color: white;
-  }
-}
-
-.placeHeaderRow {
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #000000 , #434343); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #000000 , #434343); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
-  max-width: 800px;
-  padding: 20px;
-  margin: 10px auto 20px auto;
-  border-radius: 2px;
-
-  h1 {
-    line-height:0.8;
-  }
-
-  h1, p, span {
-    color: white;
-  }
-
-  .voteButton {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    padding: 10px 10px 10px 40px;
-    position: relative;
-    transition: 0.3s;
-
-    span {
-      text-align: right;
-      color: black;  
-    }
-
-    &:hover {
-      .voteButtonIcon, span { 
-        color: var(--font-hover-color);
-      }  
-    }    
-
-    .voteButtonIcon {
-      position: absolute;
-      line-height: 14px;
-      height: 14px;
-      position: absolute;
-      left: 15px;
-      font-size: 30px;
-    }
   }
 }
 

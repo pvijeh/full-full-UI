@@ -9,14 +9,9 @@ import {
   API_VOTES_PLACE
 } from '../constants';
 
-export function getPlaceVotes(placeSlug) {
-
-// console.log('bhallllllllllllllllllllllllllllllllll');
+export function getPlaceVotes( placeSlug, endpoint ) {
 
   return async (dispatch, getState ) => {
-    // console.log('styff');
-    // console.log('dispatch', dispatch);
-    // console.log('getState', getState);
 
     dispatch({
       type: FETCH_PLACES_START,
@@ -34,8 +29,6 @@ export function getPlaceVotes(placeSlug) {
 
     const testData = await resp.json();
 
-    console.log('testData-------->', testData);
-
       dispatch({
         type: FETCH_PLACES_SUCCESS,
         payload: {
@@ -45,10 +38,6 @@ export function getPlaceVotes(placeSlug) {
 
     } catch (error) {
 
-      console.log('styff');
-
-      console.log('error', error);
-
       dispatch({
         type: FETCH_PLACES_ERROR,
         payload: {
@@ -57,8 +46,6 @@ export function getPlaceVotes(placeSlug) {
       });
       return false;
     }
-
-    console.log('styff');
 
     return true;
   };

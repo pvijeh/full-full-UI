@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addPlaceVotes } from '../../actions/addPlaceVote';
 import { toggleModal } from '../../actions/modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './PlaceTag.css';
+import s from './CategoryTag.css';
 import Link from '../Link';
 
   const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
@@ -33,25 +33,20 @@ import Link from '../Link';
     }
   }
 
-function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
+function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
 
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
         clickVote( item, placeSlug, user, addPlaceVotes, toggleModal );
       }}>
-      <div className={`col-xs-1`}>
+      <div className={`col-xs-2`}>
         <div className={s.placeTagVotes}>
           <div className={`fa fa-caret-up ${s.votesIcon}`}></div>
           <span>{item.count}</span>
         </div>
       </div>  
-      <div className={`col-xs-2`}>
-        <div className={s.placeTagIcon}>
-          <div className={`fa fa-facebook`}></div>
-        </div>
-      </div>
-      <div className={`col-xs-9`}>
+      <div className={`col-xs-10`}>
         <div className={s.placeMiddleSection}>
             <h4>{item.categorySlug}</h4>
             <p>{item.description}</p>
@@ -79,6 +74,6 @@ const mapDispatch = {
   toggleModal,
 };
 
-const EnhancedPlaceTag = connect(mapState, mapDispatch)(PlaceTag);
-export default withStyles(s)(EnhancedPlaceTag);
+const EnhancedCategoryTag = connect(mapState, mapDispatch)(CategoryTag);
+export default withStyles(s)(EnhancedCategoryTag);
 

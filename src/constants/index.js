@@ -28,10 +28,10 @@ export const ADD_VOTE_ERROR = 'ADD_VOTE_ERROR';
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const HIDE_MODAL = 'HIDE_MODAL';
 
-
 // API End Points
 
 export const API_VOTES_PLACE = 'http://localhost:5000/votes/place/';
+export const API_VOTES_CATEGORY = 'http://localhost:5000/votes/category/';
 export const API_POST_VOTE = 'http://localhost:5000/votes';
 export const LOGIN_PAGE = 'http://localhost:5000/auth/facebook';
 
