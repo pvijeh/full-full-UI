@@ -22,7 +22,7 @@ export function getPlaceVotes( placeSlug, endpoint ) {
 
     const resp = await apiCalls({ 
       action: 'get',
-      endpoint: API_VOTES_PLACE,
+      endpoint: endpoint,
       slug: placeSlug,
       data: ''
     });

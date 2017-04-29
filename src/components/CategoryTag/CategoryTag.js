@@ -10,14 +10,19 @@ import s from './CategoryTag.css';
 import Link from '../Link';
 
   const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
+
+    console.log('placeSlug', placeSlug);
     
-    if ( !user ) {
-      console.log(' not logged in !');
-      modalTog( true, 'login' );
-    } else {
-      console.log(' logged in !');
-      addVote(placeSlug, item.categorySlug);  
-    }
+    //  need to fix this so that place slug is a place slug not a category slug 
+  
+
+  //   if ( !user ) {
+  //     console.log(' not logged in !');
+  //     modalTog( true, 'login' );
+  //   } else {
+  //     console.log(' logged in !');
+  //     addVote(placeSlug, item.categorySlug);  
+  //   }
   } 
 
   // should move this to lib  
@@ -35,6 +40,8 @@ import Link from '../Link';
 
 function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
 
+  console.log('item', item);
+
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
@@ -51,6 +58,7 @@ function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
             <h4>{item.categorySlug}</h4>
             <p>{item.description}</p>
           <div className={s.placeSimilarContainer}>
+            {'stuffffffffff' + item.placeDescription}
               <span>top in category: </span>
               <Link to="/blahblah">View more > </Link>
               <span>{item.userHasVote} </span>

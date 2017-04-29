@@ -17,10 +17,8 @@ import getPlaceVotesReducer from '../../reducers/getPlaceVotesReducer';
 import addPlaceVotesReducer from '../../reducers/getPlaceVotesReducer';
 import { getPlaceVotes as getPlaceVotesAction } from '../../actions/getPlaceVotes';
 import PlaceTag from '../../components/PlaceTag';
-import TestButton from '../../components/TestButton';
-import GetVotesButton from '../../components/GetVotesButton';
 import apiCalls from '../../lib/apiCalls';
-import { API_POST_VOTE } from '../../constants';
+import { API_POST_VOTE, API_VOTES_PLACE } from '../../constants';
 
 class Places extends Component {
 
@@ -35,7 +33,7 @@ class Places extends Component {
   maybeFetchData(props) {
     const { path, locale, content, getPlaceVotes } = props || this.props;
     if (!content) {
-      getPlaceVotes('place1');
+      getPlaceVotes('place1', API_VOTES_PLACE );
     }
   }
 

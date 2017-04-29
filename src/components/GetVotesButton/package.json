@@ -1,6 +1,0 @@
-{
-  "name": "GetVotesButton",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./GetVotesButton.js"
-}

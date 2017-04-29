@@ -12,6 +12,7 @@ import Layout from '../../components/Layout';
 import Places from './Places';
 import { getPlaceVotes } from '../../actions/getPlaceVotes';
 import { addPlaceVotes } from '../../actions/addPlaceVote';
+import { API_VOTES_PLACE } from '../../constants';
 
 export default {
 
@@ -22,7 +23,7 @@ export default {
       // await store.dispatch(getContent({ path }));
       // const data = selectContent(store.getState(), { path });
 
-      await store.dispatch(getPlaceVotes(params.placeSlug));
+      await store.dispatch(getPlaceVotes(params.placeSlug, API_VOTES_PLACE ));
       // getPlaceVotes(params.placeSlug);
       const state = await store.getState();
       // console.log('state------------->>>', state );    

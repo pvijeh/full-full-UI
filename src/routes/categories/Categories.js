@@ -17,6 +17,7 @@ import getPlaceVotesReducer from '../../reducers/getPlaceVotesReducer';
 import addPlaceVotesReducer from '../../reducers/getPlaceVotesReducer';
 import { getPlaceVotes as getPlaceVotesAction } from '../../actions/getPlaceVotes';
 import CategoryTag from '../../components/CategoryTag';
+import { API_VOTES_CATEGORY } from '../../constants';
 
 class Categories extends Component {
 
@@ -29,12 +30,14 @@ class Categories extends Component {
     let user = content.getPlaceVotesReducer.user;
     let categorySlug = this.props.categorySlug;
 
+    console.log('votes------>', votes);
+
     let counts = [];
     let alreadyAdded = {};
     let i = 0;
     let categoriesWithUserVotes = {};
 
-    if (votes && votes.length > 0 ){
+    if (votes && votes.length > 0 ) {
       for ( i = 0; i < votes.length; i++ ) {
 
         let currentVote = votes[i];
@@ -43,13 +46,13 @@ class Categories extends Component {
           categoriesWithUserVotes[user] = true
         }
         
-        let value = currentVote.categorySlug;
+        let value = currentVote.placeSlug;
 
         if ( alreadyAdded[value] === undefined ) {
           alreadyAdded[value] = 1;
 
           let item = {
-            categorySlug : value,
+            placeSlug : value,
             description: currentVote.categoryDescription,
             count: alreadyAdded[value],
             userHasVote: categoriesWithUserVotes[currentVote.userId]
@@ -62,7 +65,7 @@ class Categories extends Component {
           ++alreadyAdded[value];
 
           for ( let i = 0; i < counts.length; i++ ) {
-            if ( counts[i].categorySlug === value ) {
+            if ( counts[i].placeSlug === value ) {
               counts[i].count = alreadyAdded[value];
               counts[i].userHasVote = categoriesWithUserVotes[currentVote.userId];
             }
@@ -72,6 +75,8 @@ class Categories extends Component {
     }
 
     counts = _.sortBy(counts, 'count').reverse();
+
+    console.log('votes---------->> ', votes);
 
     return (
       <div className={s.root}>
@@ -87,7 +92,7 @@ class Categories extends Component {
           </div>
         </div>
         <ul className={s.placeTagListWrapper}>
-          { counts.map((item, index) => (
+          { votes.map((item, index) => (
             <li key={index}>
               <CategoryTag item={item} placeSlug={categorySlug} user={content.getPlaceVotesReducer.user} />
             </li>

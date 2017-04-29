@@ -13,6 +13,7 @@ import Categories from './Categories';
 // need to replace this with get category votes
 import { getPlaceVotes } from '../../actions/getPlaceVotes';
 import { addPlaceVotes } from '../../actions/addPlaceVote';
+import { API_VOTES_CATEGORY } from '../../constants';
 
 export default {
 
@@ -21,7 +22,7 @@ export default {
   async action({ path, store, params }) { // eslint-disable-line react/prop-types
     try {
 
-      await store.dispatch(getPlaceVotes(params.categorySlug));
+      await store.dispatch(getPlaceVotes(params.categorySlug, API_VOTES_CATEGORY ));
       const state = await store.getState();
 
       return {
