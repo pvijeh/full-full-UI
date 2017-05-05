@@ -8,6 +8,7 @@ import { toggleModal } from '../../actions/modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './PlaceTag.css';
 import Link from '../Link';
+import { ROUTE_CATEGORY } from '../../constants';
 
   const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
     
@@ -33,7 +34,7 @@ import Link from '../Link';
     }
   }
 
-function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
+function PlaceTag({ item , addPlaceVotes, placeSlug, toggleModal, user }) {
 
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
@@ -57,7 +58,7 @@ function PlaceTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
             <p>{item.description}</p>
           <div className={s.placeSimilarContainer}>
               <span>top in category: </span>
-              <Link to="/blahblah">View more > </Link>
+              <Link to={ ROUTE_CATEGORY + item.categorySlug }> View more ></Link>
               <span>{item.userHasVote} </span>
           </div>
         </div>

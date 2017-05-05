@@ -36,6 +36,13 @@ export const API_POST_VOTE = 'http://localhost:5000/votes';
 export const LOGIN_PAGE = 'http://localhost:5000/auth/facebook';
 
 
+// ROUTES !!!!!!!!! 
+
+//places route 
+export const ROUTE_PLACE = "/bars-and-nightclubs/";
+export const ROUTE_CATEGORY = "/best-of/";
+
+
 
 
 

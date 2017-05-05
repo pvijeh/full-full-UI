@@ -8,21 +8,17 @@ import { toggleModal } from '../../actions/modal';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './CategoryTag.css';
 import Link from '../Link';
+import { ROUTE_PLACE } from '../../constants';
 
   const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
 
-    console.log('placeSlug', placeSlug);
-    
-    //  need to fix this so that place slug is a place slug not a category slug 
-  
-
-  //   if ( !user ) {
-  //     console.log(' not logged in !');
-  //     modalTog( true, 'login' );
-  //   } else {
-  //     console.log(' logged in !');
-  //     addVote(placeSlug, item.categorySlug);  
-  //   }
+    if ( !user ) {
+      console.log(' not logged in !');
+      modalTog( true, 'login' );
+    } else {
+      console.log(' logged in !');
+      addVote(placeSlug, item.categorySlug);  
+    }
   } 
 
   // should move this to lib  
@@ -40,8 +36,6 @@ import Link from '../Link';
 
 function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
 
-  console.log('item', item);
-
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
@@ -55,12 +49,12 @@ function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
       </div>  
       <div className={`col-xs-10`}>
         <div className={s.placeMiddleSection}>
-            <h4>{item.categorySlug}</h4>
+            <h4>{item.placeSlug}</h4>
             <p>{item.description}</p>
           <div className={s.placeSimilarContainer}>
-            {'stuffffffffff' + item.placeDescription}
+            {item.placeDescription}
               <span>top in category: </span>
-              <Link to="/blahblah">View more > </Link>
+              <Link to={ ROUTE_PLACE + item.placeSlug }>View more > </Link>
               <span>{item.userHasVote} </span>
           </div>
         </div>

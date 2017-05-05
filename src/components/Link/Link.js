@@ -38,6 +38,7 @@ class Link extends React.Component {
       return;
     }
 
+    event.stopPropagation();
     event.preventDefault();
     history.push(this.props.to);
   };

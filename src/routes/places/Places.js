@@ -42,74 +42,26 @@ class Places extends Component {
     const { path, content } = this.props;
     let votes = content.getPlaceVotesReducer.votes;
     let user = content.getPlaceVotesReducer.user;
-    let placeSlug = this.props.placeSlug;
 
-    let counts = [];
-    let alreadyAdded = {};
-    let i = 0;
-    let categoriesWithUserVotes = {};
-
-    if (votes && votes.length > 0) {
-      for ( i = 0; i < votes.length; i++ ) {
-
-        let currentVote = votes[i];
-
-        if ( user === currentVote.userId ) {
-          categoriesWithUserVotes[user] = true
-        }
-        
-        let value = currentVote.categorySlug;
-
-        if ( alreadyAdded[value] === undefined ) {
-          alreadyAdded[value] = 1;
-
-          let item = {
-            categorySlug : value,
-            description: currentVote.categoryDescription,
-            count: alreadyAdded[value],
-            userHasVote: categoriesWithUserVotes[currentVote.userId]
-          }
-
-          counts.push(item);
-
-        } else {
-
-          ++alreadyAdded[value];
-
-          for ( let i = 0; i < counts.length; i++ ) {
-            if ( counts[i].categorySlug === value ) {
-              counts[i].count = alreadyAdded[value];
-              counts[i].userHasVote = categoriesWithUserVotes[currentVote.userId];
-            }
-          }          
-        }
-      }
-    }
-    
-    counts = _.sortBy(counts, 'count').reverse();
+    console.log('votes', votes);
 
     return (
       <div className={s.root}>
         <div className={`row ${s.placeHeaderRow}`}>
-          <div className={`col-xs-6`}>
+          <div className={`col-xs-12`}>
             <h1>{this.props.title}</h1>
-            <p> description automatically generated from certain tags</p>
-            <button className={`${s.voteButton}`} onClick={this.blah}>
-              <div><div className={`${s.voteButtonIcon} fa fa-caret-up`}></div><span> 123</span></div>
-            </button>
+            <p> need to insert category description </p>
           </div>
-          <div className={`col-xs-6 ${s.socialButtonContainerOutter}`}>
           <div className={`${s.socialButtonContainer}`}>
             <button className={`fa fa-facebook ${s.facebookBgColor}`} onClick={this.blah}></button>
             <button className={`fa fa-twitter ${s.twitterBgColor}`} onClick={this.blah}></button>
             <button className={`fa fa-pinterest ${s.pinterestBgColor}`} onClick={this.blah}></button>
           </div>
-          </div>
         </div>
         <ul className={s.placeTagListWrapper}>
-          { counts.map((item, index) => (
+          { votes.map((item, index) => (
             <li key={index}>
-              <PlaceTag item={item} placeSlug={placeSlug} user={content.getPlaceVotesReducer.user} />
+              <PlaceTag item={item} placeSlug={item.placeSlug} user={user} />
             </li>
           ))}
         </ul>

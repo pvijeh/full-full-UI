@@ -23,60 +23,11 @@ class Categories extends Component {
 
   render() {
 
-    // should try to move this logic into a lib or something
-
     const { path, content } = this.props;
     let votes = content.getPlaceVotesReducer.votes;
     let user = content.getPlaceVotesReducer.user;
-    let categorySlug = this.props.categorySlug;
 
-    console.log('votes------>', votes);
-
-    let counts = [];
-    let alreadyAdded = {};
-    let i = 0;
-    let categoriesWithUserVotes = {};
-
-    if (votes && votes.length > 0 ) {
-      for ( i = 0; i < votes.length; i++ ) {
-
-        let currentVote = votes[i];
-
-        if ( user === currentVote.userId ) {
-          categoriesWithUserVotes[user] = true
-        }
-        
-        let value = currentVote.placeSlug;
-
-        if ( alreadyAdded[value] === undefined ) {
-          alreadyAdded[value] = 1;
-
-          let item = {
-            placeSlug : value,
-            description: currentVote.categoryDescription,
-            count: alreadyAdded[value],
-            userHasVote: categoriesWithUserVotes[currentVote.userId]
-          }
-
-          counts.push(item);
-
-        } else {
-
-          ++alreadyAdded[value];
-
-          for ( let i = 0; i < counts.length; i++ ) {
-            if ( counts[i].placeSlug === value ) {
-              counts[i].count = alreadyAdded[value];
-              counts[i].userHasVote = categoriesWithUserVotes[currentVote.userId];
-            }
-          }          
-        }
-      }
-    }
-
-    counts = _.sortBy(counts, 'count').reverse();
-
-    console.log('votes---------->> ', votes);
+    console.log('votes------------>', votes );
 
     return (
       <div className={s.root}>
@@ -94,7 +45,7 @@ class Categories extends Component {
         <ul className={s.placeTagListWrapper}>
           { votes.map((item, index) => (
             <li key={index}>
-              <CategoryTag item={item} placeSlug={categorySlug} user={content.getPlaceVotesReducer.user} />
+              <CategoryTag item={item} placeSlug={item.placeSlug} user={user} />
             </li>
           ))}
         </ul>
