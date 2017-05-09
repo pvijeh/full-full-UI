@@ -17,7 +17,7 @@ import { ROUTE_CATEGORY } from '../../constants';
       modalTog( true, 'login' );
     } else {
       console.log(' logged in !');
-      addVote(placeSlug, item.categorySlug);  
+      addVote(placeSlug, item.categorySlug, 'place');  
     }
   } 
 

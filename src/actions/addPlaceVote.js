@@ -11,7 +11,9 @@ import {
   ADD_VOTE_USER_NOT_LOGGEDIN
 } from '../constants';
 
-export function addPlaceVotes( placeSlug, categorySlug ) {
+
+// origin should say whether the click originated from a category page or a place page 
+export function addPlaceVotes( placeSlug, categorySlug, origin ) {
 
   console.log('add place vote');
 
@@ -28,7 +30,7 @@ export function addPlaceVotes( placeSlug, categorySlug ) {
       action: 'post',
       endpoint: API_POST_VOTE,
       slug: '',
-      data: {placeSlug, categorySlug }
+      data: {placeSlug, categorySlug, origin }
     });
 
     let testData = await resp.json();
