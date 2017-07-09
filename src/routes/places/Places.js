@@ -44,6 +44,7 @@ class Places extends Component {
     let user = content.getPlaceVotesReducer.user;
 
     console.log('votes', votes);
+    console.log('content.getPlaceVotesReducer.user', content.getPlaceVotesReducer.user);
 
     return (
       <div className={s.root}>
