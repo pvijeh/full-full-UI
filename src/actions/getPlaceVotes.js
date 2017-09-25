@@ -20,7 +20,7 @@ export function getPlaceVotes( placeSlug, endpoint ) {
 
     try {
 
-    const resp = await apiCalls({ 
+    const resp = await apiCalls({
       action: 'get',
       endpoint: endpoint,
       slug: placeSlug,
@@ -28,6 +28,8 @@ export function getPlaceVotes( placeSlug, endpoint ) {
     });
 
     const testData = await resp.json();
+
+    console.log('testData----------->', testData);
 
       dispatch({
         type: FETCH_PLACES_SUCCESS,

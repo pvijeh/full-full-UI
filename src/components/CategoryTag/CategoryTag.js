@@ -10,27 +10,31 @@ import s from './CategoryTag.css';
 import Link from '../Link';
 import { ROUTE_PLACE } from '../../constants';
 
+console.log(' YOOOOOOOOOO11111111111111111111111O ');
+
   const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
 
     if ( !user ) {
+      console.log(' YOOOOOOOOOOO ');
       console.log(' not logged in !');
       modalTog( true, 'login' );
     } else {
+      console.log(' YOOOOOOOOOOO ');
       console.log(' logged in !');
-      addVote(placeSlug, item.categorySlug, 'category');  
+      addVote(placeSlug, item.categorySlug, 'category');
     }
-  } 
+  }
 
-  // should move this to lib  
-  
+  // should move this to lib
+
   // params:
   // condition
-  // class returned if true 
+  // class returned if true
   const classIf = ( condition, cssClass ) => {
     if (condition) {
       return cssClass;
     } else {
-      return ''; 
+      return '';
     }
   }
 
@@ -39,6 +43,9 @@ function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
+
+        console.log('stuff !!!!!!!!!!!!!!!!!', item);
+
         clickVote( item, placeSlug, user, addPlaceVotes, toggleModal );
       }}>
       <div className={`col-xs-2`}>
@@ -46,7 +53,7 @@ function CategoryTag({ item, addPlaceVotes, placeSlug, toggleModal, user }) {
           <div className={`fa fa-caret-up ${s.votesIcon}`}></div>
           <span>{item.count}</span>
         </div>
-      </div>  
+      </div>
       <div className={`col-xs-10`}>
         <div className={s.placeMiddleSection}>
             <h4>{item.placeSlug}</h4>

@@ -9,6 +9,8 @@ import s from './PlaceTag.css';
 import Link from '../Link';
 import { ROUTE_CATEGORY } from '../../constants';
 
+console.log('fuck!!!!!!!!!!!');
+
 const clickVote = (item, placeSlug, user, addVote, modalTog ) => {
 
   if ( !user ) {
@@ -33,9 +35,14 @@ const classIf = ( condition, cssClass ) => {
 
 function PlaceTag({ item , addPlaceVotes, placeSlug, toggleModal, user }) {
 
+  console.log('item', item);
+
   return (
     <div className={`row ${s.placeTagContainer} ${classIf( item.userHasVote, s.testClass)}`}
       onClick={()=>{
+
+        console.log('item !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', item);
+
         clickVote( item, placeSlug, user, addPlaceVotes, toggleModal );
       }}>
       <div className={`col-xs-1`}>

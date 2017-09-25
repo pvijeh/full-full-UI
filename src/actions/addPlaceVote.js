@@ -12,7 +12,7 @@ import {
 } from '../constants';
 
 
-// origin should say whether the click originated from a category page or a place page 
+// origin should say whether the click originated from a category page or a place page
 export function addPlaceVotes( placeSlug, categorySlug, origin ) {
 
   console.log('add place vote');
@@ -26,7 +26,7 @@ export function addPlaceVotes( placeSlug, categorySlug, origin ) {
 
     try {
 
-    const resp = await apiCalls({ 
+    const resp = await apiCalls({
       action: 'post',
       endpoint: API_POST_VOTE,
       slug: '',
@@ -35,9 +35,15 @@ export function addPlaceVotes( placeSlug, categorySlug, origin ) {
 
     let testData = await resp.json();
 
+    console.log('testData------------>', testData);
+
     if ( testData.loggedIn === 'false' ) {
 
     } else {
+
+      console.log('testData------------>', testData);
+
+
       dispatch({
         type: ADD_VOTE_SUCCESS,
         payload: {
@@ -47,6 +53,8 @@ export function addPlaceVotes( placeSlug, categorySlug, origin ) {
     }
 
     } catch (error) {
+
+      console.log('testData------------>', testData);
 
       dispatch({
         type: ADD_VOTE_ERROR,
